@@ -2,15 +2,10 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-
 class LoadLevel extends StatefulWidget {
-
   const LoadLevel({
     super.key,
-    required this.textTheme,
   });
-
-  final TextTheme textTheme;
 
   @override
   State<LoadLevel> createState() => _LoadLevelState();
@@ -28,12 +23,19 @@ class _LoadLevelState extends State<LoadLevel> {
       _end = newLevel;
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        AnimatedLoadLevel(begin: _begin, end: _end,),
-        AnimatedLoadLevelText(textTheme: widget.textTheme, begin: _begin, end: _end,)
+        AnimatedLoadLevel(
+          begin: _begin,
+          end: _end,
+        ),
+        AnimatedLoadLevelText(
+          begin: _begin,
+          end: _end,
+        )
       ],
     );
   }
@@ -42,13 +44,18 @@ class _LoadLevelState extends State<LoadLevel> {
 class AnimatedLoadLevel extends StatefulWidget {
   final double begin;
   final double end;
-  const AnimatedLoadLevel({super.key, required this.begin, required this.end,});
+  const AnimatedLoadLevel({
+    super.key,
+    required this.begin,
+    required this.end,
+  });
 
   @override
   State<AnimatedLoadLevel> createState() => _AnimatedLoadLevelState();
 }
 
-class _AnimatedLoadLevelState extends State<AnimatedLoadLevel> with TickerProviderStateMixin {
+class _AnimatedLoadLevelState extends State<AnimatedLoadLevel>
+    with TickerProviderStateMixin {
   late AnimationController firstController;
   late Animation<double> firstAnimation;
 
@@ -130,8 +137,8 @@ class _AnimatedLoadLevelState extends State<AnimatedLoadLevel> with TickerProvid
 
     heightController =
         AnimationController(vsync: this, duration: const Duration(seconds: 1));
-    heightAnimation =
-        Tween<double>(begin: widget.begin, end: widget.end).animate(heightController);
+    heightAnimation = Tween<double>(begin: widget.begin, end: widget.end)
+        .animate(heightController);
 
     Timer(const Duration(seconds: 2), () {
       firstController.forward();
@@ -166,7 +173,6 @@ class _AnimatedLoadLevelState extends State<AnimatedLoadLevel> with TickerProvid
       backgroundColor: Theme.of(context).colorScheme.surface,
       body: Stack(
         children: [
-          
           Container(
             clipBehavior: Clip.hardEdge,
             decoration: BoxDecoration(
@@ -247,35 +253,38 @@ class WavePainer extends CustomPainter {
   }
 }
 
-
 class AnimatedLoadLevelText extends StatefulWidget {
   final double begin;
   final double end;
   const AnimatedLoadLevelText({
     super.key,
-    required this.textTheme, required this.begin, required this.end,
+    required this.begin,
+    required this.end,
   });
-
-  final TextTheme textTheme;
 
   @override
   State<AnimatedLoadLevelText> createState() => _AnimatedLoadLevelTextState();
 }
 
-class _AnimatedLoadLevelTextState extends State<AnimatedLoadLevelText> with SingleTickerProviderStateMixin {
+class _AnimatedLoadLevelTextState extends State<AnimatedLoadLevelText>
+    with SingleTickerProviderStateMixin {
   late AnimationController _controller;
-  late Animation<double> _animation; 
+  late Animation<double> _animation;
 
   @override
   void initState() {
-    _controller = AnimationController(vsync: this, duration: const Duration(seconds: 1));
-    _animation = Tween<double>(begin: widget.begin, end: widget.end).animate(_controller)..addListener(() {setState(() {
-      
-    });});
+    _controller =
+        AnimationController(vsync: this, duration: const Duration(seconds: 1));
+    _animation =
+        Tween<double>(begin: widget.begin, end: widget.end).animate(_controller)
+          ..addListener(() {
+            setState(() {});
+          });
     super.initState();
 
     _controller.forward();
   }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -284,8 +293,14 @@ class _AnimatedLoadLevelTextState extends State<AnimatedLoadLevelText> with Sing
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("${_animation.value.toStringAsFixed(0)}%", style: widget.textTheme.displayLarge,), 
-          Text("Текущий уровень загрузки", style: widget.textTheme.titleSmall,),
+          Text(
+            "${_animation.value.toStringAsFixed(0)}%",
+            style: Theme.of(context).textTheme.displayLarge,
+          ),
+          Text(
+            "Текущий уровень загрузки",
+            style: Theme.of(context).textTheme.titleSmall,
+          ),
         ],
       ),
     );

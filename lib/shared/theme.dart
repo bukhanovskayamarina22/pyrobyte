@@ -2,24 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:pyrobyte/shared/constants.dart';
 
 ColorScheme lightColorScheme = const ColorScheme.light(
-
   primary: Color(0xff218cef),
   onPrimary: Color(0xffffffff),
-  primaryContainer: Color(0xfff1f1f9), 
+  primaryContainer: Color(0xfff1f1f9),
   onPrimaryContainer: Color(0xff131037),
-
   secondary: Color(0xff999999),
-
   tertiary: Color(0xffcccccc),
-
   error: Color(0xffe63426),
   errorContainer: Color(0xfff97879),
-
   surface: Color(0xffffffff),
   onSurface: Color(0xff131037),
-
   outline: Color(0xff218cef),
-
 );
 
 // var color7 = Color(0xff00be08); //success color?lor
@@ -89,7 +82,6 @@ TextTheme textTheme = const TextTheme(
     fontWeight: FontWeight.w300,
     fontSize: 14,
     height: 16 / 14,
-
   ), // Caption text style
   labelLarge: TextStyle(
     fontFamily: Constants.jost,

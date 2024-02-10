@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 class PaddingLeft18 extends StatelessWidget {
   final Widget? child;
   const PaddingLeft18({
-    super.key, this.child,
+    super.key,
+    this.child,
   });
 
   @override
@@ -15,7 +16,8 @@ class PaddingLeft18 extends StatelessWidget {
 class PaddingTop16 extends StatelessWidget {
   final Widget? child;
   const PaddingTop16({
-    super.key, this.child,
+    super.key,
+    this.child,
   });
 
   @override
@@ -27,7 +29,8 @@ class PaddingTop16 extends StatelessWidget {
 class PaddingLeft16 extends StatelessWidget {
   final Widget? child;
   const PaddingLeft16({
-    super.key, this.child,
+    super.key,
+    this.child,
   });
 
   @override
@@ -39,40 +42,47 @@ class PaddingLeft16 extends StatelessWidget {
 class PaddingTop8 extends StatelessWidget {
   final Widget? child;
   const PaddingTop8({
-    super.key, this.child,
+    super.key,
+    this.child,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Padding(padding: const EdgeInsets.only(top: 8),
-    child: child,);
+    return Padding(
+      padding: const EdgeInsets.only(top: 8),
+      child: child,
+    );
   }
 }
 
 class PaddingRight8 extends StatelessWidget {
   final Widget? child;
   const PaddingRight8({
-    super.key, this.child,
+    super.key,
+    this.child,
   });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(right: 8), 
-      child: child,);
+      padding: const EdgeInsets.only(right: 8),
+      child: child,
+    );
   }
 }
+
 class PaddingTop24 extends StatelessWidget {
   final Widget? child;
   const PaddingTop24({
-    super.key, this.child,
+    super.key,
+    this.child,
   });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 24), 
+      padding: const EdgeInsets.only(top: 24),
       child: child,
-      );
+    );
   }
 }
